@@ -2,7 +2,8 @@
 FROM c3h3/py278-openblas-scipy-base
 
 RUN ipython profile create dark
-ADD custom.css /home/pyuser/.ipython/profile_dark/static/custom/custom.css
+RUN wget https://gist.githubusercontent.com/c3h3/74d5ce0bb3448823363e/raw/1e448eb5ae751642f374d010a830a8bcbc89a6bd/ipynb-dark-style
+RUN mv /home/pyuser/ipynb-dark-style /home/pyuser/.ipython/profile_dark/static/custom/custom.css
 CMD ipython notebook --no-browser --ip=0.0.0.0 --port 8888 --profile=dark
 
 
